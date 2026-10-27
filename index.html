@@ -1282,5 +1282,387 @@ function back(){
 }
 init();
 </script>
+
+
+<!-- ILMO Health: Educational Resources -->
+<style>
+  #ilmo-resources {
+    direction: ltr;
+    font-family: Arial, sans-serif;
+    color: #183b50;
+    background: #f3fbff;
+    padding: 22px 14px;
+    border-radius: 20px;
+    margin: 18px 0;
+  }
+
+  #ilmo-resources * { box-sizing: border-box; }
+
+  #ilmo-resources .res-heading {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  #ilmo-resources .res-heading h2 {
+    color: #087f9d;
+    margin: 0 0 8px;
+    font-size: 25px;
+  }
+
+  #ilmo-resources .res-heading p {
+    color: #587587;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  #ilmo-resources .res-search {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #c8e5ef;
+    border-radius: 12px;
+    background: white;
+    font-size: 15px;
+    margin-bottom: 13px;
+    outline-color: #36b5d1;
+  }
+
+  #ilmo-resources .res-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+
+  #ilmo-resources .res-filter {
+    border: 1px solid #c8e5ef;
+    border-radius: 20px;
+    background: white;
+    color: #087f9d;
+    padding: 9px 12px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  #ilmo-resources .res-filter.active {
+    background: #087f9d;
+    color: white;
+    border-color: #087f9d;
+  }
+
+  #ilmo-resources .res-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 13px;
+  }
+
+  #ilmo-resources .res-card {
+    background: white;
+    border: 1px solid #dceef4;
+    border-radius: 16px;
+    padding: 17px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    box-shadow: 0 4px 14px rgba(20, 100, 130, .05);
+  }
+
+  #ilmo-resources .res-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: #e5f7fc;
+    font-size: 23px;
+  }
+
+  #ilmo-resources .res-category {
+    color: #0785a2;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+
+  #ilmo-resources .res-card h3 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #163f56;
+  }
+
+  #ilmo-resources .res-author {
+    font-size: 12px;
+    color: #647f8c;
+    line-height: 1.6;
+  }
+
+  #ilmo-resources .res-description {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #456273;
+    flex: 1;
+    margin: 0;
+  }
+
+  #ilmo-resources .res-link {
+    display: block;
+    background: #087f9d;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 11px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+
+  #ilmo-resources .res-link:hover {
+    background: #06647c;
+  }
+
+  #ilmo-resources .res-note {
+    background: #e5f7fc;
+    padding: 13px;
+    border-radius: 12px;
+    font-size: 12px;
+    line-height: 1.8;
+    margin-top: 18px;
+    color: #315a6b;
+  }
+
+  #ilmo-resources .res-empty {
+    display: none;
+    text-align: center;
+    padding: 25px 10px;
+    color: #647f8c;
+  }
+  </script>
+</style>
+
+<section id="ilmo-resources">
+  <div class="res-heading">
+    <div style="font-size:36px;margin-bottom:8px">📚</div>
+    <h2>Educational Resources</h2>
+    <p>ILMO Health | Trusted Pharmacy & Medical Learning</p>
+    <p dir="rtl">مكتبة تعليمية للمراجع الصيدلانية والمواقع الطبية الموثوقة</p>
+  </div>
+
+  <input
+    id="ilmo-res-search"
+    class="res-search"
+    type="search"
+    placeholder="Search books, medicines, clinical topics..."
+    aria-label="Search educational resources"
+  />
+
+  <div class="res-filters">
+    <button class="res-filter active" data-category="all">All Resources</button>
+    <button class="res-filter" data-category="books">Books</button>
+    <button class="res-filter" data-category="clinical">Clinical Pharmacy</button>
+    <button class="res-filter" data-category="medicine">Medicines</button>
+    <button class="res-filter" data-category="safety">Drug Safety</button>
+    <button class="res-filter" data-category="health">Health Information</button>
+  </div>
+
+  <div class="res-grid" id="ilmo-res-grid">
+
+    <article class="res-card" data-category="books clinical">
+      <div class="res-icon">📘</div>
+      <div class="res-category">Community Pharmacy</div>
+      <h3>Community Pharmacy: Symptoms, Diagnosis and Treatment</h3>
+      <div class="res-author">Author: Paul Rutter | Publisher: Elsevier</div>
+      <p class="res-description">
+        A reference for community pharmacy, common symptoms,
+        self-care, nonprescription treatment and referral warning signs.
+      </p>
+      <a class="res-link" href="https://shop.elsevier.com/"
+         target="_blank" rel="noopener noreferrer">Find Book at Elsevier ↗</a>
+    </article>
+
+    <article class="res-card" data-category="books medicine">
+      <div class="res-icon">📗</div>
+      <div class="res-category">Nonprescription Medicines</div>
+      <h3>Handbook of Nonprescription Drugs</h3>
+      <div class="res-author">American Pharmacists Association (APhA)</div>
+      <p class="res-description">
+        Supports learning about OTC medicines, self-care,
+        precautions, patient counseling and referral decisions.
+      </p>
+      <a class="res-link" href="https://www.pharmacist.com/"
+         target="_blank" rel="noopener noreferrer">Visit APhA ↗</a>
+    </article>
+
+    <article class="res-card" data-category="books clinical">
+      <div class="res-icon">📙</div>
+      <div class="res-category">Clinical Case Studies</div>
+      <h3>Pharmacotherapy Casebook: A Patient-Focused Approach</h3>
+      <div class="res-author">Terry L. Schwinghammer and contributing authors</div>
+      <p class="res-description">
+        Patient-centered case learning, medication-related problems,
+        therapeutic planning and monitoring.
+      </p>
+      <a class="res-link" href="https://accesspharmacy.mhmedical.com/"
+         target="_blank" rel="noopener noreferrer">Visit AccessPharmacy ↗</a>
+    </article>
+
+    <article class="res-card" data-category="books clinical">
+      <div class="res-icon">📕</div>
+      <div class="res-category">Clinical Therapeutics</div>
+      <h3>Clinical Pharmacy and Therapeutics</h3>
+      <div class="res-author">Roger Walker & Cate Whittlesea | Elsevier</div>
+      <p class="res-description">
+        Clinical pharmacy concepts and pharmacotherapy across
+        different diseases and body systems.
+      </p>
+      <a class="res-link" href="https://www.elsevier.com/"
+         target="_blank" rel="noopener noreferrer">Visit Elsevier ↗</a>
+    </article>
+
+    <article class="res-card" data-category="health safety">
+      <div class="res-icon">🌍</div>
+      <div class="res-category">Global Health</div>
+      <h3>World Health Organization (WHO)</h3>
+      <div class="res-author">International public health organization</div>
+      <p class="res-description">
+        Public health guidance, disease information, essential medicines
+        and medication safety resources.
+      </p>
+      <a class="res-link" href="https://www.who.int/"
+         target="_blank" rel="noopener noreferrer">Visit WHO ↗</a>
+    </article>
+
+    <article class="res-card" data-category="health medicine">
+      <div class="res-icon">🩺</div>
+      <div class="res-category">Patient Health Information</div>
+      <h3>MedlinePlus</h3>
+      <div class="res-author">U.S. National Library of Medicine</div>
+      <p class="res-description">
+        Accessible information about diseases, symptoms,
+        medicines, medical tests and health conditions.
+      </p>
+      <a class="res-link" href="https://medlineplus.gov/"
+         target="_blank" rel="noopener noreferrer">Visit MedlinePlus ↗</a>
+    </article>
+
+    <article class="res-card" data-category="medicine safety">
+      <div class="res-icon">💊</div>
+      <div class="res-category">Official Drug Labels</div>
+      <h3>DailyMed</h3>
+      <div class="res-author">U.S. National Library of Medicine</div>
+      <p class="res-description">
+        Drug labeling information, indications, dosage,
+        warnings, contraindications and adverse reactions.
+      </p>
+      <a class="res-link" href="https://dailymed.nlm.nih.gov/"
+         target="_blank" rel="noopener noreferrer">Search Drug Labels ↗</a>
+    </article>
+
+    <article class="res-card" data-category="medicine health">
+      <div class="res-icon">💠</div>
+      <div class="res-category">Medicines Information</div>
+      <h3>NHS Medicines A–Z</h3>
+      <div class="res-author">National Health Service, United Kingdom</div>
+      <p class="res-description">
+        Medicine guides, how to use medicines, common side effects
+        and important precautions.
+      </p>
+      <a class="res-link" href="https://www.nhs.uk/medicines/"
+         target="_blank" rel="noopener noreferrer">Explore NHS Medicines ↗</a>
+    </article>
+
+    <article class="res-card" data-category="clinical medicine">
+      <div class="res-icon">🔬</div>
+      <div class="res-category">Medical Literature</div>
+      <h3>PubMed</h3>
+      <div class="res-author">National Library of Medicine</div>
+      <p class="res-description">
+        Search biomedical research articles, clinical studies
+        and reviews relevant to pharmacy practice.
+      </p>
+      <a class="res-link" href="https://pubmed.ncbi.nlm.nih.gov/"
+         target="_blank" rel="noopener noreferrer">Search PubMed ↗</a>
+    </article>
+
+    <article class="res-card" data-category="clinical safety">
+      <div class="res-icon">📖</div>
+      <div class="res-category">Evidence-Based Information</div>
+      <h3>Medscape</h3>
+      <div class="res-author">Medical and healthcare reference platform</div>
+      <p class="res-description">
+        Clinical articles, disease overviews, drug information
+        and professional medical education. Some features require an account.
+      </p>
+      <a class="res-link" href="https://www.medscape.com/"
+         target="_blank" rel="noopener noreferrer">Visit Medscape ↗</a>
+    </article>
+
+  </div>
+
+  <div class="res-empty" id="ilmo-res-empty">
+    No resources found. Try another search.
+  </div>
+
+  <div class="res-note" dir="rtl">
+    <strong>ملاحظة تعليمية:</strong>
+    الكتب قد تتطلب شراءً أو اشتراكاً للوصول إلى محتواها.
+    روابط المواقع تُفتح خارج التطبيق، وتوفّر هذه المكتبة روابط للمراجع
+    ولا تعني أن محتوى الكتب الكامل متاح مجاناً.
+    يجب التحقق من المعلومات الدوائية والجرعات من مصادر سريرية معتمدة
+    ومناسبة لبلد المريض.
+  </div>
+</section>
+
+<script>
+(function () {
+  const root = document.getElementById("ilmo-resources");
+  if (!root) return;
+
+  const search = root.querySelector("#ilmo-res-search");
+  const filters = root.querySelectorAll(".res-filter");
+  const cards = root.querySelectorAll(".res-card");
+  const empty = root.querySelector("#ilmo-res-empty");
+
+  let activeCategory = "all";
+
+  function filterResources() {
+    const term = search.value.toLowerCase().trim();
+    let visible = 0;
+
+    cards.forEach(function (card) {
+      const categories = card.dataset.category.split(" ");
+      const matchesCategory =
+        activeCategory === "all" ||
+        categories.includes(activeCategory);
+
+      const matchesSearch =
+        card.textContent.toLowerCase().includes(term);
+
+      const show = matchesCategory && matchesSearch;
+      card.style.display = show ? "flex" : "none";
+
+      if (show) visible++;
+    });
+
+    empty.style.display = visible ? "none" : "block";
+  }
+
+  search.addEventListener("input", filterResources);
+
+  filters.forEach(function (button) {
+    button.addEventListener("click", function () {
+      activeCategory = button.dataset.category;
+
+      filters.forEach(function (item) {
+        item.classList.toggle("active", item === button);
+      });
+
+      filterResources();
+    });
+  });
+
+  filterResources();
+})();
 </body>
 </html>
