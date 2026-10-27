@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eafaff">
+  <title>صيدليتي | ILMO Health</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f3fbff;
+      color: #163b55;
+    }
+
+    /* شاشة البداية */
+    #splash {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: opacity 0.5s ease;
+    }
+
+    .logo-mark {
+      width: 105px;
+      height: 105px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #e4faff, #c8f1fa);
+      display: grid;
+      place-items: center;
+      color: #087f9e;
+      font-size: 52px;
+      font-weight: bold;
+      box-shadow: 0 12px 35px #0089a51c;
+      margin-bottom: 18px;
+    }
+
+    #splash h1 {
+      color: #087e9c;
+      font-size: 30px;
+      margin: 0 0 8px;
+      direction: ltr;
+    }
+
+    #splash p {
+      margin: 5px;
+      color: #607f91;
+    }
+
+    .tagline {
+      font-size: 12px;
+      letter-spacing: 2px;
+      direction: ltr;
+    }
+
+    .loader {
+      width: 35px;
+      height: 35px;
+      border: 3px solid #d8f3fa;
+      border-top-color: #0785a3;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-top: 28px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* الواجهة الرئيسية */
+    header {
+      background: linear-gradient(135deg, #dff8ff, #ffffff);
+      padding: 25px 20px;
+      border-radius: 0 0 28px 28px;
+      box-shadow: 0 4px 20px #0b79920c;
+    }
+
+    .brand {
+      color: #0783a0;
+      direction: ltr;
+      text-align: right;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    header h1 {
+      font-size: 27px;
+      margin: 22px 0 8px;
+    }
+
+    header p {
+      color: #58798c;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-size: 19px;
+      margin: 12px 0 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .tile {
+      background: #ffffff;
+      border: 1px solid #e1f2f8;
+      border-radius: 18px;
+      padding: 18px 14px;
+      min-height: 145px;
+      text-align: right;
+      cursor: pointer;
+      box-shadow: 0 5px 18px #126b8510;
+      color: #163b55;
+      font-family: inherit;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .tile:active {
+      transform: scale(0.97);
+    }
+
+    .tile:hover {
+      border-color: #8bd9ea;
+    }
+
+    .tile-icon {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .tile strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 7px;
+    }
+
+    .tile small {
+      color: #718b9b;
+      line-height: 1.7;
+      font-size: 12px;
+    }
+
+    .notice {
+      background: #e4f8fd;
+      border: 1px solid #c9edf6;
+      border-radius: 16px;
+      padding: 15px;
+      margin-top: 20px;
+      color: #28667c;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    footer {
+      text-align: center;
+      color: #7a96a5;
+      padding: 24px 12px;
+      font-size: 12px;
+      direction: ltr;
+    }
+
+    #details {
+      display: none;
+      background: white;
+      padding: 20px;
+      border-radius: 18px;
+      margin-top: 18px;
+      line-height: 1.9;
+      border: 1px solid #dceff6;
+    }
+
+    #details button {
+      border: 0;
+      border-radius: 10px;
+      background: #087f9e;
+      color: white;
+      padding: 11px 20px;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    @media (max-width: 360px) {
+      main { padding: 14px; }
+      .grid { gap: 9px; }
+      .tile { padding: 14px 10px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section id="splash">
+    <div class="logo-mark">+</div>
+    <h1>ILMO Health</h1>
+    <p class="tagline">LEARN · HEALTH · GROW</p>
+    <p>تطبيقات تعليمية وصحية</p>
+    <div class="loader"></div>
+  </section>
+
+  <header>
+    <div class="brand">ILMO Health</div>
+    <h1>أهلاً بيك بصيدليتي 💙</h1>
+    <p>مساحتك للتعلّم الصحي والمعلومات الصيدلانية.</p>
+  </header>
+
+  <main>
+    <h2 class="section-title">الخدمات الرئيسية</h2>
+
+    <div class="grid">
+      <button class="tile" onclick="showSection('medicines')">
+        <span class="tile-icon">💊</span>
+        <strong>دليل الأدوية</strong>
+        <small>معلومات الأدوية واستعمالاتها</small>
+      </button>
+
+      <button class="tile" onclick="showSection('learn')">
+        <span class="tile-icon">📚</span>
+        <strong>التثقيف الصحي</strong>
+        <small>تعلّم مواضيع صحية مبسّطة</small>
+      </button>
+
+      <button class="tile" onclick="showSection('calculator')">
+        <span class="tile-icon">🧮</span>
+        <strong>أدوات صيدلانية</strong>
+        <small>أدوات مساعدة للحسابات</small>
+      </button>
+
+      <button class="tile" onclick="showSection('sources')">
+        <span class="tile-icon">🔬</span>
+        <strong>المصادر الطبية</strong>
+        <small>مصادر موثوقة للمعلومات</small>
+      </button>
+    </div>
+
+    <div id="details">
+      <h2 id="details-title"></h2>
+      <p id="details-text"></p>
+      <button onclick="closeSection()">رجوع</button>
+    </div>
+
+    <div class="notice">
+      <strong>تنبيه صحي</strong><br>
+      المعلومات هنا للتثقيف فقط، ولا تغني عن استشارة الطبيب أو الصيدلي.
+      لا تعتمد على التطبيق وحده لاتخاذ قرارات العلاج.
+    </div>
+  </main>
+
+  <footer>ILMO Health · LEARN · HEALTH · GROW</footer>
+
+  <script>
+    const sections = {
+      medicines: {
+        title: "💊 دليل الأدوية",
+        text: "هنا راح نبني دليل الأدوية تدريجياً، مع معلومات موثوقة عن الاستعمالات والتحذيرات والتداخلات الدوائية. هذه النسخة تجريبية ولا تحتوي بعد على قاعدة بيانات أدوية."
+      },
+      learn: {
+        title: "📚 التثقيف الصحي",
+        text: "هنا راح نضيف مقالات صحية مبسطة ومعلومات تعليمية مبنية على مصادر طبية موثوقة."
+      },
+      calculator: {
+        title: "🧮 أدوات صيدلانية",
+        text: "هنا راح نضيف أدوات صيدلانية مناسبة مع توضيح طريقة الاستخدام والتحقق من النتائج."
+      },
+      sources: {
+        title: "🔬 المصادر الطبية",
+        text: "راح نضيف روابط لمصادر مثل منظمة الصحة العالمية WHO وMedlinePlus ومراجع طبية موثوقة."
+      }
+    };
+
+    function showSection(key) {
+      const section = sections[key];
+      document.getElementById("details-title").textContent = section.title;
+      document.getElementById("details-text").textContent = section.text;
+      document.getElementById("details").style.display = "block";
+      document.getElementById("details").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+    function closeSection() {
+      document.getElementById("details").style.display = "none";
+    }
+
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        const splash = document.getElementById("splash");
+        splash.style.opacity = "0";
+        setTimeout(function () {
+          splash.style.display = "none";
+        }, 500);
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
