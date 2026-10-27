@@ -5,447 +5,310 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#eafaff">
-<title>صيدليتي | ILMO Health</title>
+<title>ILMO Health | Clinical Cases</title>
 <style>
-:root {
-  --blue:#087f9e;
-  --navy:#153d59;
-  --cyan:#e7f9ff;
-  --bg:#f4fbfe;
-  --muted:#718999;
-  --border:#deedf4;
-  --white:#fff;
-}
+:root{--blue:#087f9e;--navy:#153d59;--bg:#f3fbfe;--cyan:#e4f8ff;--border:#dceef5}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--navy);
-font-family:Tahoma,Arial,sans-serif}
+body{margin:0;background:var(--bg);color:var(--navy);font-family:Tahoma,Arial,sans-serif}
+header{padding:24px 18px;background:linear-gradient(135deg,#d8f6ff,#fff);border-radius:0 0 25px 25px}
+header h1{margin:12px 0}
+main{max-width:850px;margin:auto;padding:16px}
+.brand{direction:ltr;color:var(--blue);font-weight:bold}
+.panel,.card{background:#fff;border:1px solid var(--border);border-radius:17px;padding:15px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 button,input,select{font:inherit}
 button{cursor:pointer}
-#splash{position:fixed;inset:0;background:#fff;z-index:20;
-display:flex;align-items:center;justify-content:center;
-flex-direction:column;text-align:center;transition:opacity .4s}
-.splash-logo{width:min(85%,360px);height:auto}
-.loader{width:30px;height:30px;border:3px solid #d7f1f8;
-border-top-color:var(--blue);border-radius:50%;
-animation:spin .8s linear infinite;margin-top:24px}
-@keyframes spin{to{transform:rotate(360deg)}}
-header{padding:22px 18px 26px;background:linear-gradient(135deg,#dff8ff,#fff);
-border-radius:0 0 28px 28px}
-.brand{direction:ltr;text-align:right;font-weight:bold;color:var(--blue)}
-header h1{font-size:26px;margin:24px 0 8px}
-header p{line-height:1.8;color:#58798c;margin:0}
-main{max-width:850px;margin:auto;padding:18px}
-.section-title{font-size:20px;margin:12px 0}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.tile,.panel,.case-card{background:white;border:1px solid var(--border);
-border-radius:18px;box-shadow:0 4px 15px #145b7610}
-.tile{text-align:right;padding:17px 14px;min-height:130px;color:var(--navy)}
-.tile:active,.primary:active{transform:scale(.98)}
-.tile-icon{display:block;font-size:29px;margin-bottom:10px}
-.tile strong{display:block;margin-bottom:7px}
-.tile small{color:var(--muted);line-height:1.7}
-.panel{padding:16px;margin:14px 0}
-button.primary{background:var(--blue);color:#fff;border:0;
-border-radius:12px;padding:12px 16px}
-button.secondary{background:var(--cyan);color:var(--blue);
-border:1px solid #cdeef7;border-radius:12px;padding:10px 14px}
-button.back{background:transparent;border:0;color:var(--blue);padding:8px 0}
-input,select{width:100%;padding:12px;border:1px solid var(--border);
-border-radius:12px;background:#fff;color:var(--navy);margin:6px 0 12px}
-.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
-.row>*{flex:1}
-.muted{color:var(--muted);font-size:13px;line-height:1.8}
-.notice{background:#e5f7fd;border:1px solid #ccecf5;
-padding:14px;border-radius:15px;font-size:13px;line-height:1.9;margin-top:18px}
-.badge{display:inline-block;background:var(--cyan);color:var(--blue);
-border-radius:20px;padding:5px 10px;font-size:12px;margin:3px}
-.case-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.case-card{padding:13px;text-align:right;color:var(--navy)}
-.case-card strong{display:block;margin:8px 0}
-.case-card small{color:var(--muted);line-height:1.7}
-.option{display:block;width:100%;text-align:right;padding:13px;
-margin:9px 0;background:white;border:1px solid var(--border);
-border-radius:13px;color:var(--navy);line-height:1.7}
-.option:hover{border-color:var(--blue)}
-.option:disabled{cursor:default;opacity:1}
-.option.correct{background:#e5f8ee;border-color:#59b98a}
-.option.wrong{background:#fff0ee;border-color:#e59b91}
-.progress{height:7px;background:#e2eff4;border-radius:10px;overflow:hidden;margin:12px 0}
-.progress span{display:block;height:100%;background:var(--blue);width:0}
-footer{text-align:center;color:var(--muted);padding:25px;font-size:12px;direction:ltr}
+button,input,select{border-radius:11px}
+input,select{width:100%;padding:12px;margin:5px 0 12px;border:1px solid var(--border);background:#fff;color:var(--navy)}
+.tile,.option{padding:14px;background:#fff;border:1px solid var(--border);color:var(--navy);text-align:right}
+.tile{border-radius:14px;min-height:95px}
+.tile strong{display:block;margin-bottom:8px}
+.primary{background:var(--blue);color:white;border:0;padding:12px 16px}
+.secondary{background:var(--cyan);color:var(--blue);border:1px solid var(--border);padding:10px}
+.option{display:block;width:100%;margin:8px 0;border-radius:12px;line-height:1.7}
+.option:disabled{opacity:1}
+.correct{background:#e4f8eb;border-color:#62bd8b}
+.wrong{background:#fff0ed;border-color:#e5a097}
+.muted{color:#718999;font-size:13px;line-height:1.8}
+.badge{display:inline-block;padding:5px 10px;background:var(--cyan);color:var(--blue);border-radius:20px;font-size:12px;margin:3px}
+.notice{background:#e9f8fd;border-radius:13px;padding:13px;font-size:13px;line-height:1.9}
+a{color:var(--blue);overflow-wrap:anywhere}
 .hidden{display:none!important}
-@media(max-width:380px){main{padding:12px}.case-list{grid-template-columns:1fr}
-header h1{font-size:23px}}
+h2{font-size:21px}
+footer{text-align:center;padding:22px;color:#718999;font-size:12px;direction:ltr}
+@media(max-width:380px){main{padding:11px}.grid{gap:7px}}
 </style>
 </head>
 <body>
-
-<div id="splash">
-  <img class="splash-logo" src="1000042930.png" alt="ILMO Health"
-       onerror="this.style.display='none';document.getElementById('fallbackLogo').style.display='block'">
-  <h2 id="fallbackLogo" style="display:none;color:#087f9e">ILMO Health</h2>
-  <p style="color:#58798c">تطبيقات تعليمية وصحية</p>
-  <div class="loader"></div>
-</div>
-
 <header>
   <div class="brand">ILMO Health</div>
-  <h1>أهلاً بيك بصيدليتي 💙</h1>
-  <p>تعلّم، تدرّب، وطوّر مهاراتك الصيدلانية خطوة بخطوة.</p>
+  <h1>🩺 الكيسات المرضية</h1>
+  <p>تدريب سريري صيدلاني — Clinical Case Practice</p>
 </header>
 
 <main>
-  <section id="home">
-    <h2 class="section-title">الخدمات الرئيسية</h2>
-    <div class="grid">
-      <button class="tile" onclick="showSimple('الأدوية','سيتم تطوير دليل الأدوية بمعلومات الاستعمال والتحذيرات والتداخلات من مصادر موثوقة.')">
-        <span class="tile-icon">💊</span><strong>دليل الأدوية</strong>
-        <small>استعمالات وتحذيرات الأدوية</small>
-      </button>
-      <button class="tile" onclick="showSimple('التثقيف الصحي','مساحة لإضافة مقالات ومعلومات صحية مبسّطة.')">
-        <span class="tile-icon">📚</span><strong>التثقيف الصحي</strong>
-        <small>معلومات تعليمية وصحية</small>
-      </button>
-      <button class="tile" onclick="showSimple('أدوات صيدلانية','ستضاف أدوات حسابية تعليمية مع التحقق من المدخلات والنتائج.')">
-        <span class="tile-icon">🧮</span><strong>أدوات صيدلانية</strong>
-        <small>أدوات وحسابات مساعدة</small>
-      </button>
-      <button class="tile" onclick="showSimple('المصادر الطبية','من المصادر المقترحة: WHO وMedlinePlus والإرشادات العلاجية المعتمدة محلياً.')">
-        <span class="tile-icon">🔬</span><strong>المصادر الطبية</strong>
-        <small>مصادر موثوقة للمعلومات</small>
-      </button>
-      <button class="tile" onclick="openCases()">
-        <span class="tile-icon">🩺</span><strong>الكيسات المرضية</strong>
-        <small>حالات افتراضية واختبر معلوماتك</small>
-      </button>
-      <button class="tile" onclick="showSimple('Skin Care','سيتم توسيع محتوى العناية بالبشرة وربطه بنوع البشرة والتحذيرات المناسبة.')">
-        <span class="tile-icon">🧴</span><strong>العناية بالبشرة</strong>
-        <small>أساسيات Skin Care</small>
-      </button>
-    </div>
-    <div class="notice"><strong>تنبيه صحي</strong><br>
-    هذا التطبيق تعليمي. لا تستخدم الحالات لتشخيص أو علاج مريض حقيقي،
-    ولا تصرف دواءً اعتماداً على سؤال تدريبي وحده.</div>
-  </section>
+<section id="home">
+  <div class="panel">
+    <h2>مركز التدريب</h2>
+    <p class="muted">حالات افتراضية أصلية للتدريب على جمع المعلومات، وتحديد علامات الخطر، واختيار التصرف الصيدلاني المناسب.</p>
+    <label for="search">البحث عن حالة أو تخصص</label>
+    <input id="search" placeholder="مثلاً: الربو، الضغط، الجلدية..." oninput="renderCases()">
+    <label for="system">اختر الجهاز أو التخصص</label>
+    <select id="system" onchange="renderCases()">
+      <option value="all">جميع التخصصات</option>
+    </select>
+    <label for="difficulty">مستوى الصعوبة</label>
+    <select id="difficulty" onchange="renderCases()">
+      <option value="all">جميع المستويات</option>
+      <option>مبتدئ</option><option>متوسط</option><option>متقدم</option>
+    </select>
+    <p id="stats" class="badge">الحالات: 0</p>
+    <p id="score" class="badge">النتيجة: 0 / 0</p>
+  </div>
+  <div id="list" class="grid"></div>
+  <div class="panel">
+    <h2>📚 مكتبة المصادر</h2>
+    <p class="muted">روابط الناشرين والمواقع المرجعية. وجود المرجع هنا لا يعني أن الحالة أدناه منقولة منه حرفياً؛ الحالات التدريبية مكتوبة بصورة أصلية.</p>
+    <div id="sources"></div>
+  </div>
+  <div class="notice">تنبيه: التطبيق للتعليم فقط، وليس لتشخيص المرضى أو وصف الأدوية لهم. راجع الإرشادات المحلية ومعلومات الدواء المعتمدة.</div>
+</section>
 
-  <section id="simple" class="hidden">
-    <button class="back" onclick="goHome()">← رجوع للرئيسية</button>
-    <div class="panel"><h2 id="simpleTitle"></h2><p id="simpleText"></p></div>
-  </section>
-
-  <section id="cases" class="hidden">
-    <button class="back" onclick="goHome()">← الرئيسية</button>
-    <h2 class="section-title">🩺 الكيسات المرضية</h2>
-    <p class="muted">اختر تخصصاً، اقرأ الحالة، ثم اختر أفضل تصرّف من الخيارات المتاحة.</p>
-    <div class="panel">
-      <label for="search">ابحث عن تخصص أو حالة</label>
-      <input id="search" placeholder="مثلاً: ربو، ضغط، حب الشباب..." oninput="renderCases()">
-      <label for="category">تصفية حسب النظام</label>
-      <select id="category" onchange="renderCases()">
-        <option value="all">جميع الأنظمة</option>
-      </select>
-      <label for="level">مستوى الصعوبة</label>
-      <select id="level" onchange="renderCases()">
-        <option value="all">جميع المستويات</option>
-        <option value="مبتدئ">مبتدئ</option>
-        <option value="متوسط">متوسط</option>
-        <option value="متقدم">متقدم</option>
-      </select>
-      <div class="row">
-        <div><span class="badge" id="caseCount">0 حالة</span></div>
-        <div><span class="badge" id="scoreLabel">النتيجة: 0</span></div>
-      </div>
-    </div>
-    <div id="caseList" class="case-list"></div>
-    <div id="quiz" class="panel hidden"></div>
-    <div class="notice"><strong>ملاحظة تعليمية:</strong>
-    الإجابة الأفضل في بعض الحالات هي الإحالة للتقييم الطبي، لا صرف دواء.
-    يجب الرجوع إلى الإرشادات المحلية ومراجع الدواء المعتمدة.</div>
-  </section>
+<section id="detail" class="hidden">
+  <button class="secondary" onclick="back()">← رجوع للحالات</button>
+  <div class="panel">
+    <div id="tags"></div>
+    <h2 id="title"></h2>
+    <p id="patient" class="muted"></p>
+    <p id="story"></p>
+    <h3 id="question"></h3>
+    <div id="options"></div>
+    <div id="feedback" class="hidden panel"></div>
+    <button id="next" class="primary hidden" onclick="back()">العودة لقائمة الحالات</button>
+  </div>
+</section>
 </main>
-
 <footer>ILMO Health · LEARN · HEALTH · GROW</footer>
 
 <script>
-const cases = [
-{
- id:1,cat:"GI",name:"الجهاز الهضمي",title:"حموضة بعد الوجبات",level:"مبتدئ",
- age:28,sex:"ذكر",
- story:"يشكو مريض افتراضي عمره 28 سنة من حرقة خفيفة بعد وجبة كبيرة منذ يومين. لا توجد صعوبة بلع أو آلام صدرية أو علامات إنذار مذكورة.",
- q:"ما أفضل خطوة أولية؟",
- options:["تقييم الأعراض والعوامل المحفزة، ونصح غذائي مناسب مع التحقق من علامات الإنذار","صرف مضاد حيوي مباشرة","استخدام عدة أدوية معاً دون سؤال إضافي","تجاهل الأعراض دائماً"],
- answer:0,
- why:"الأعراض الخفيفة المرتبطة بالطعام تستدعي تقييم النمط والعوامل المحفزة وعلامات الإنذار قبل اختيار علاج. ألم الصدر أو صعوبة البلع أو النزف تستلزم تقييماً طبياً."
-},
-{
- id:2,cat:"Respiratory",name:"الجهاز التنفسي",title:"صفير وضيق نفس",level:"متوسط",
- age:19,sex:"أنثى",
- story:"مريضة افتراضية لديها ربو معروف، وتشعر الآن بضيق نفس متزايد وصعوبة في إكمال الجمل.",
- q:"ما التصرف الأنسب؟",
- options:["تجربة شراب للسعال والانتظار","اعتبارها حالة طارئة وطلب الإسعاف واتباع خطة الربو الإسعافية الموصوفة إن وجدت","إيقاف كل أدويتها","صرف مضاد حيوي دون فحص"],
- answer:1,
- why:"ضيق النفس الشديد أو عدم القدرة على إكمال الجمل علامة خطر. يلزم طلب المساعدة الطارئة فوراً وعدم تأخير التقييم."
-},
-{
- id:3,cat:"Cardiology",name:"القلب والضغط",title:"قراءة ضغط مرتفعة",level:"متوسط",
- age:52,sex:"ذكر",
- story:"قراءة ضغط واحدة مرتفعة في الصيدلية، ولا توجد أعراض مذكورة. لم تُراجع طريقة القياس أو التاريخ المرضي بعد.",
- q:"ما الخطوة الأفضل؟",
- options:["تشخيص ارتفاع الضغط من قراءة واحدة وصرف دواء","تكرار القياس بطريقة صحيحة بعد الراحة، وتقييم الأعراض والتاريخ وترتيب المتابعة المناسبة","إعطاء جرعة إضافية من دواء شخص آخر","تجاهل القراءة دون متابعة"],
- answer:1,
- why:"القراءة المفردة لا تكفي وحدها لتشخيص معظم حالات ارتفاع الضغط. إذا وُجد ألم صدر أو ضيق نفس أو أعراض عصبية جديدة، فيلزم تقييم عاجل."
-},
-{
- id:4,cat:"Endocrine",name:"السكري والغدد",title:"مريض سكري متعرّق",level:"متقدم",
- age:44,sex:"أنثى",
- story:"مريضة تستخدم الإنسولين وتشعر برجفة وتعرّق مفاجئ. هي واعية وقادرة على البلع، ويُشتبه بهبوط سكر الدم.",
- q:"ما الأولوية إذا كانت قادرة على البلع بأمان؟",
- options:["إعطاء جرعة إنسولين إضافية","قياس السكر إن أمكن، واتباع بروتوكول علاج الهبوط السريع بالسكر وإعادة التحقق","منع الطعام والشراب تماماً","الانتظار عدة ساعات"],
- answer:1,
- why:"هبوط السكر المحتمل يحتاج تصرفاً سريعاً وفق بروتوكول معتمد ومراقبة الاستجابة. إذا فقدت الوعي أو لم تستطع البلع، لا يُعطى شيء بالفم وتُطلب الطوارئ."
-},
-{
- id:5,cat:"Renal",name:"الكلى والمسالك",title:"حرقة بول مع حرارة",level:"متوسط",
- age:31,sex:"أنثى",
- story:"مريضة افتراضية لديها حرقة بول مع حرارة وألم في الخاصرة منذ يوم واحد.",
- q:"ما أفضل تصرف؟",
- options:["اعتبارها التهاباً بسيطاً وصرف أي مضاد متاح","إحالتها لتقييم طبي عاجل لاحتمال عدوى كلوية","نصحها بتقليل شرب الماء بشدة","استخدام مضاد حيوي متبقٍ من وصفة قديمة"],
- answer:1,
- why:"الحرارة وألم الخاصرة قد يشيران إلى التهاب كلوي أو عدوى معقدة، ويتطلبان تقييماً طبياً واختيار العلاج المناسب بناءً على الحالة."
-},
-{
- id:6,cat:"Dermatology",name:"الجلدية وSkin Care",title:"حب شباب خفيف",level:"مبتدئ",
- age:20,sex:"ذكر",
- story:"شاب افتراضي لديه رؤوس سوداء وبثور قليلة من دون ألم شديد أو ندبات أو كتل عميقة.",
- q:"ما النهج الأولي الأنسب؟",
- options:["اختيار روتين لطيف مناسب للبشرة، ومناقشة علاج موضعي مناسب بعد التحقق من الموانع","استخدام عدة مقشرات قوية في اليوم نفسه","بدء إيزوتريتينوين فموي دون إشراف طبي","عصر جميع البثور"],
- answer:0,
- why:"الحالات الخفيفة يمكن أن تستفيد من عناية لطيفة وخيارات موضعية مناسبة بعد التقييم. الأدوية الفموية القوية تحتاج إشرافاً مختصاً، وبعض علاجات حب الشباب لا تناسب الحمل."
-},
-{
- id:7,cat:"Neurology",name:"الجهاز العصبي",title:"صداع مفاجئ شديد",level:"متقدم",
- age:36,sex:"ذكر",
- story:"مريض افتراضي يصف صداعاً مفاجئاً شديداً جداً وصل إلى أقصى شدته خلال ثوانٍ.",
- q:"ما القرار الصحيح؟",
- options:["صرف مسكن فقط وإرساله إلى المنزل","إحالته إلى الطوارئ فوراً لتقييم سبب خطير محتمل","نصحه بالنوم والانتظار حتى الغد","تجربة مكمل غذائي"],
- answer:1,
- why:"الصداع المفاجئ الشديد جداً علامة إنذار تستلزم تقييماً طارئاً ولا ينبغي تأخيرها بتجربة علاجات منزلية."
-},
-{
- id:8,cat:"Musculoskeletal",name:"العضلات والمفاصل",title:"ألم ركبة بعد إصابة",level:"متوسط",
- age:25,sex:"أنثى",
- story:"مريضة افتراضية التوت ركبتها أثناء الرياضة. يوجد تورم واضح ولا تستطيع تحميل وزنها على الساق.",
- q:"ما التصرف الأنسب؟",
- options:["صرف مسكن فقط دون تقييم","ترتيب تقييم طبي عاجل لاحتمال إصابة مهمة","إجبارها على المشي لتختبر الركبة","بدء مضاد حيوي"],
- answer:1,
- why:"عدم القدرة على تحميل الوزن مع التورم بعد الإصابة يستدعي تقييماً طبياً. لا ينبغي افتراض أن الإصابة مجرد التواء بسيط."
-},
-{
- id:9,cat:"Eye & ENT",name:"العيون والأذن",title:"ألم عين مع تغيّر النظر",level:"متقدم",
- age:41,sex:"ذكر",
- story:"مريض افتراضي لديه ألم بالعين واحمرار وتغيّر حديث في الرؤية.",
- q:"ما الخطوة الصحيحة؟",
- options:["استخدام قطرات عشوائية من الصيدلية","إحالته فوراً لتقييم عيون عاجل","تغطية العين والانتظار أسبوعاً","استخدام قطرات ستيرويد دون فحص"],
- answer:1,
- why:"ألم العين المصحوب بتغيّر الرؤية قد يدل على حالة خطيرة ويحتاج تقييماً عاجلاً. بعض القطرات قد تزيد حالات معينة سوءاً."
-},
-{
- id:10,cat:"Infectious",name:"العدوى والمضادات",title:"زكام مع رشح",level:"مبتدئ",
- age:24,sex:"أنثى",
- story:"مريضة افتراضية لديها رشح وعطاس واحتقان خفيف منذ يومين، ولا توجد حرارة شديدة أو ضيق نفس أو علامات إنذار.",
- q:"ما المبدأ الصحيح بخصوص المضاد الحيوي؟",
- options:["صرف مضاد حيوي لكل حالات الزكام","توضيح أن الزكام غالباً فيروسي، وتقديم رعاية عرضية مناسبة بعد التحقق من الموانع","استخدام نوعين من المضادات معاً","استخدام بقايا مضاد سابق"],
- answer:1,
- why:"المضادات الحيوية لا تعالج الفيروسات المسببة لمعظم حالات الزكام. يلزم التقييم إذا ظهرت أعراض شديدة أو مستمرة أو علامات إنذار."
-},
-{
- id:11,cat:"Women's Health",name:"صحة المرأة",title:"احتمال حمل",level:"متوسط",
- age:27,sex:"أنثى",
- story:"مريضة افتراضية تأخرت دورتها الشهرية وتطلب دواءً لتخفيف أعراضها. حالة الحمل غير معروفة.",
- q:"ما الخطوة الأنسب قبل اقتراح علاج؟",
- options:["صرف أي دواء دون سؤال","التحقق من احتمال الحمل والأعراض والأدوية الحالية، وإجراء اختبار مناسب أو إحالتها حسب الحالة","افتراض عدم وجود حمل","إيقاف كل علاج موصوف دون مراجعة"],
- answer:1,
- why:"احتمال الحمل يؤثر في اختيار كثير من الأدوية. يجب تقييم الأعراض والتحقق من الحمل عند الحاجة ومراجعة ملاءمة العلاج."
-},
-{
- id:12,cat:"Pediatrics",name:"الأطفال",title:"جرعة دواء لطفل",level:"متوسط",
- age:4,sex:"طفل",
- story:"ولي أمر يطلب جرعة دواء لطفل عمره أربع سنوات، لكنه لا يعرف وزن الطفل ولا تركيز المستحضر الموجود لديه.",
- q:"ما التصرف الأكثر أماناً؟",
- options:["تخمين الجرعة حسب العمر فقط","التحقق من الوزن واسم الدواء وتركيزه وتعليمات المستحضر قبل حساب أي جرعة","استخدام ملعقة مطبخ عادية","استخدام جرعة شخص بالغ وتقسيمها بالتخمين"],
- answer:1,
- why:"جرعات الأطفال تعتمد على الدواء والوزن والتركيز وعوامل أخرى. لا يجوز تخمين الجرعة؛ يجب التحقق من مرجع موثوق وتعليمات المستحضر."
-},
-{
- id:13,cat:"Mental Health",name:"الصحة النفسية",title:"أعراض مزاجية مستمرة",level:"متوسط",
- age:30,sex:"ذكر",
- story:"مريض افتراضي يذكر انخفاض المزاج وفقدان الاهتمام بالنشاطات لعدة أسابيع، ويؤثر ذلك في حياته اليومية.",
- q:"ما النهج الأولي الأفضل؟",
- options:["صرف دواء نفسي دون تقييم","الاستماع والتقييم المهني للأعراض والسلامة وترتيب رعاية مناسبة","طمأنته بأن الأعراض لا تستحق الاهتمام","اقتراح إيقاف جميع الأدوية الحالية"],
- answer:1,
- why:"الأعراض المستمرة والمؤثرة في الحياة تستحق تقييماً مهنياً. يجب السؤال عن السلامة وخطر إيذاء النفس، وتوفير مساعدة عاجلة إذا كان الخطر وشيكاً."
-},
-{
- id:14,cat:"Hematology",name:"الدم وفقر الدم",title:"تعب وشحوب",level:"متوسط",
- age:33,sex:"أنثى",
- story:"مريضة افتراضية تشكو التعب والشحوب. لا توجد تحاليل حديثة أو معلومات كافية لتحديد سبب الأعراض.",
- q:"ما أفضل خطوة؟",
- options:["بدء الحديد لكل مريض متعب","تقييم الأسباب المحتملة ومراجعة الفحوصات المناسبة قبل تحديد العلاج","تناول عدة مكملات بجرعات عالية","تجاهل الأعراض"],
- answer:1,
- why:"التعب والشحوب قد ينتجان عن أسباب مختلفة. اختيار الحديد دون تقييم قد يؤخر تشخيص السبب الصحيح أو يؤدي إلى علاج غير مناسب."
-},
-{
- id:15,cat:"Pharmacy Practice",name:"الممارسة الصيدلانية",title:"حساسية دوائية سابقة",level:"متقدم",
- age:48,sex:"ذكر",
- story:"مريض يطلب مضاداً حيوياً ويذكر حدوث تورم بالوجه وصعوبة تنفس بعد دواء سابق، لكنه لا يتذكر اسمه.",
- q:"ما الأولوية؟",
- options:["صرف دواء من العائلة نفسها دون تحقق","توثيق وصف التفاعل والتحقق من الدواء السابق ومراجعة مختص قبل الاختيار","تجاهل الحساسية لأنها قديمة","تجربة جرعة صغيرة من الدواء المطلوب"],
- answer:1,
- why:"التورم وصعوبة التنفس قد يشيران إلى تفاعل تحسسي خطير. يجب توضيح الدواء المسبب قدر الإمكان وتجنب إعادة التعرض غير الآمن ومراجعة مختص."
-}
+const sources=[
+ {id:"rutter",name:"Community Pharmacy: Symptoms, Diagnosis and Treatment — Paul Rutter",
+  url:"https://shop.elsevier.com/books/community-pharmacy/rutter/978-0-443-24619-7",
+  note:"التقييم والتشخيص التفريقي، أعراض المجتمع، الإحالة وخيارات العلاج."},
+ {id:"aphaa",name:"APhA — American Pharmacists Association",
+  url:"https://www.pharmacist.com/",
+  note:"مراجع ومصادر الممارسة الصيدلانية."},
+ {id:"casebook",name:"Pharmacotherapy Casebook: A Patient-Focused Approach",
+  url:"https://www.mheducation.com/highered/mhp/product/pharmacotherapy-casebook-patient-focused-approach-eleventh-edition.html",
+  note:"التفكير العلاجي المتمحور حول المريض ومشكلات العلاج الدوائي."},
+ {id:"access",name:"AccessPharmacy — McGraw Hill",
+  url:"https://accesspharmacy.mhmedical.com/",
+  note:"مراجع ومواد تعليمية صيدلانية؛ بعض المحتوى يحتاج اشتراكاً."},
+ {id:"medscape",name:"Medscape",
+  url:"https://www.medscape.com/",
+  note:"معلومات سريرية وتعليمية ومحتوى للحالات."},
+ {id:"pharmacytimes",name:"Pharmacy Times",
+  url:"https://www.pharmacytimes.com/",
+  note:"مقالات ومحتوى تعليمي للصيادلة."},
+ {id:"pl",name:"Pharmacist’s Letter",
+  url:"https://pharmacist.therapeuticresearch.com/",
+  note:"مراجعات عملية دوائية؛ قد يتطلب الوصول اشتراكاً."},
+ {id:"nonprescription",name:"Handbook of Nonprescription Drugs — APhA",
+  url:"https://www.pharmacist.com/",
+  note:"مرجع للأدوية التي لا تحتاج وصفة، وتقييم أعراض الحالات البسيطة. تحقق من بيانات الطبعة المتاحة لدى الناشر."},
+ {id:"walker",name:"Clinical Pharmacy and Therapeutics",
+  url:"https://www.elsevier.com/",
+  note:"مرجع للعلاج السريري والتدبير الدوائي؛ ابحث عن الطبعة المتاحة لدى الناشر."}
 ];
 
-let totalAnswered = 0;
-let totalCorrect = 0;
-let activeCase = null;
-let answered = false;
+const cases=[
+{id:1,system:"GI",name:"الجهاز الهضمي",title:"حرقة بعد الطعام",level:"مبتدئ",age:29,sex:"ذكر",
+story:"مريض افتراضي يعاني حرقة متقطعة بعد وجبات كبيرة. لا يذكر صعوبة بلع أو نزفاً أو ألماً صدرياً. لا نعرف بعد أدويته وتاريخه المرضي.",
+question:"ما التصرف الصيدلاني الأول الأنسب؟",
+options:["جمع تاريخ الأعراض والأدوية، والتحقق من علامات الإنذار قبل مناقشة الخيارات المناسبة","صرف مضاد حيوي مباشرة","اختيار عدة أدوية دون أسئلة","طمأنته دون تقييم"],
+answer:0,why:"ينبغي تقييم الأعراض ومدتها وعلامات الإنذار والأدوية الأخرى قبل اختيار تدبير مناسب. الأعراض المقلقة تستدعي الإحالة.",
+source:["rutter","nonprescription"]},
 
-function showSimple(title,text){
-  hideAll();
-  document.getElementById("simpleTitle").textContent=title;
-  document.getElementById("simpleText").textContent=text;
-  document.getElementById("simple").classList.remove("hidden");
-  window.scrollTo(0,0);
-}
-function hideAll(){
-  ["home","simple","cases"].forEach(id=>document.getElementById(id).classList.add("hidden"));
-}
-function goHome(){
-  hideAll();
-  document.getElementById("home").classList.remove("hidden");
-  window.scrollTo(0,0);
-}
-function openCases(){
-  hideAll();
-  document.getElementById("cases").classList.remove("hidden");
-  populateCategories();
-  renderCases();
-  window.scrollTo(0,0);
-}
-function populateCategories(){
-  const select=document.getElementById("category");
-  if(select.options.length>1)return;
-  const cats=[...new Map(cases.map(c=>[c.cat,c.name])).entries()];
-  cats.forEach(([value,label])=>{
-    const option=document.createElement("option");
-    option.value=value;
-    option.textContent=value+" — "+label;
-    select.appendChild(option);
+{id:2,system:"Respiratory",name:"الجهاز التنفسي",title:"ضيق نفس لدى مريض ربو",level:"متقدم",age:21,sex:"أنثى",
+story:"مريضة افتراضية لديها ربو معروف، وتعاني الآن ضيق نفس متزايداً ولا تستطيع إكمال جملة بشكل طبيعي.",
+question:"ما الأولوية؟",
+options:["شراب للسعال والانتظار","طلب المساعدة الطبية الطارئة واتباع خطة الطوارئ الموصوفة إن وجدت","صرف مضاد حيوي","تأجيل التقييم إلى الغد"],
+answer:1,why:"ضيق النفس الشديد أو صعوبة الكلام علامة خطر. لا يجوز تأخير الرعاية الطارئة بتجربة أدوية غير مناسبة.",
+source:["rutter","walker","medscape"]},
+
+{id:3,system:"Cardiology",name:"القلب والضغط",title:"قراءة ضغط مرتفعة",level:"متوسط",age:54,sex:"ذكر",
+story:"قراءة واحدة لضغط الدم أعلى من المتوقع في الصيدلية. لا توجد معلومات كافية عن طريقة القياس أو التاريخ المرضي.",
+question:"ما الخطوة الأنسب؟",
+options:["تشخيص ارتفاع الضغط من قراءة واحدة","إعادة القياس بطريقة صحيحة بعد الراحة، وتقييم الأعراض وترتيب المتابعة","إعطاء دواء شخص آخر","تجاهل النتيجة دائماً"],
+answer:1,why:"تحتاج القراءة إلى قياس صحيح وتقييم مناسب. وجود أعراض مثل ألم الصدر أو أعراض عصبية جديدة يستلزم تقييماً عاجلاً.",
+source:["casebook","walker","pl"]},
+
+{id:4,system:"Endocrine",name:"السكري والغدد",title:"اشتباه هبوط السكر",level:"متقدم",age:46,sex:"أنثى",
+story:"مريضة تستخدم الإنسولين وتشعر برجفة وتعرق مفاجئ. هي واعية وقادرة على البلع، ويُشتبه بهبوط السكر.",
+question:"ما التصرف التعليمي الأكثر أماناً؟",
+options:["إعطاء إنسولين إضافي","قياس السكر إن أمكن واتباع بروتوكول معتمد لعلاج الهبوط وإعادة التحقق","منع الطعام والشراب","الانتظار ساعات دون متابعة"],
+answer:1,why:"هبوط السكر يحتاج تصرفاً سريعاً وفق بروتوكول معتمد ومراقبة الاستجابة. إذا تعذر البلع أو فقد المريض الوعي، لا يعطى شيء بالفم وتُطلب الطوارئ.",
+source:["casebook","walker","pl"]},
+
+{id:5,system:"Renal",name:"الكلى والمسالك",title:"حرقة بول مع حرارة",level:"متوسط",age:32,sex:"أنثى",
+story:"مريضة افتراضية لديها حرقة بول وحرارة وألم في الخاصرة. لا توجد تحاليل أو معلومات كافية عن الحمل أو التاريخ المرضي.",
+question:"ما التصرف الأنسب؟",
+options:["صرف أي مضاد متاح","إحالتها لتقييم طبي عاجل لاحتمال عدوى كلوية","استخدام بقايا دواء قديم","تجاهل الحرارة"],
+answer:1,why:"الحرارة وألم الخاصرة قد يشيران إلى عدوى تحتاج تقييماً طبياً. اختيار العلاج يعتمد على الحالة والتقييم والمرجع المحلي.",
+source:["casebook","walker","medscape"]},
+
+{id:6,system:"Dermatology",name:"الجلدية وSkin Care",title:"حب شباب خفيف",level:"مبتدئ",age:20,sex:"ذكر",
+story:"شاب افتراضي لديه رؤوس سوداء وبثور قليلة، دون كتل عميقة أو ندبات أو علامات عدوى شديدة.",
+question:"ما النهج الأولي الأنسب؟",
+options:["روتين لطيف وتقييم خيار موضعي ملائم بعد مراجعة الموانع","استخدام مقشرات قوية متعددة في اليوم نفسه","بدء علاج فموي قوي دون إشراف","عصر جميع البثور"],
+answer:0,why:"يجب مراعاة نوع البشرة وشدة الحالة والموانع والتحسس. العلاجات الفموية القوية تتطلب تقييماً وإشرافاً مختصاً.",
+source:["rutter","nonprescription","pharmacytimes"]},
+
+{id:7,system:"Neurology",name:"الجهاز العصبي",title:"صداع مفاجئ شديد",level:"متقدم",age:37,sex:"ذكر",
+story:"مريض افتراضي يصف صداعاً مفاجئاً شديداً وصل إلى أقصى شدته خلال ثوانٍ.",
+question:"ما القرار الصحيح؟",
+options:["صرف مسكن فقط","إحالته إلى الطوارئ فوراً","نصحه بالانتظار حتى الغد","اقتراح مكمل غذائي"],
+answer:1,why:"الصداع المفاجئ الشديد جداً علامة إنذار وقد يشير إلى سبب خطير يحتاج تقييماً طارئاً.",
+source:["casebook","medscape"]},
+
+{id:8,system:"Musculoskeletal",name:"العضلات والمفاصل",title:"إصابة ركبة",level:"متوسط",age:26,sex:"أنثى",
+story:"التوت مريضة افتراضية ركبتها أثناء الرياضة، وظهر تورم واضح ولا تستطيع تحميل وزنها على الساق.",
+question:"ما الخطوة الأفضل؟",
+options:["مسكن فقط دون تقييم","إحالة لتقييم طبي عاجل","إجبارها على المشي","مضاد حيوي"],
+answer:1,why:"عدم القدرة على تحميل الوزن مع التورم بعد الإصابة يستلزم تقييماً مناسباً لاحتمال إصابة مهمة.",
+source:["rutter","medscape"]},
+
+{id:9,system:"Eye & ENT",name:"العيون والأذن",title:"ألم العين وتغيّر النظر",level:"متقدم",age:42,sex:"ذكر",
+story:"مريض افتراضي يعاني ألماً واحمراراً في العين مع تغير حديث في الرؤية.",
+question:"ما التصرف الأنسب؟",
+options:["قطرات عشوائية","تقييم عيون عاجل","قطرات ستيرويد دون فحص","الانتظار أسبوعاً"],
+answer:1,why:"ألم العين مع تغيّر الرؤية قد يكون علامة حالة خطيرة تستدعي تقييماً عاجلاً.",
+source:["rutter","medscape"]},
+
+{id:10,system:"Infectious",name:"العدوى والمضادات",title:"أعراض زكام",level:"مبتدئ",age:24,sex:"أنثى",
+story:"رشح وعطاس واحتقان خفيف منذ يومين، دون علامات إنذار مذكورة.",
+question:"ما المبدأ الصحيح بشأن المضادات الحيوية؟",
+options:["كل زكام يحتاج مضاداً","معظم حالات الزكام فيروسية، وتُختار الرعاية العرضية بعد التحقق من الموانع","استخدام نوعين معاً","استخدام بقايا وصفة قديمة"],
+answer:1,why:"المضادات الحيوية لا تعالج الفيروسات المسببة لمعظم حالات الزكام. يجب تقييم الأعراض الشديدة أو المستمرة أو المقلقة.",
+source:["walker","pl","pharmacytimes"]},
+
+{id:11,system:"Women's Health",name:"صحة المرأة",title:"احتمال حمل",level:"متوسط",age:28,sex:"أنثى",
+story:"مريضة تأخرت دورتها وتطلب علاجاً لأعراض بسيطة، لكن احتمال الحمل لم يُحسم.",
+question:"ما الخطوة المناسبة قبل اقتراح علاج؟",
+options:["صرف الدواء دون سؤال","التحقق من احتمال الحمل والأعراض والأدوية الحالية ومراجعة ملاءمة العلاج","افتراض عدم وجود حمل","إيقاف كل علاج موصوف دون مراجعة"],
+answer:1,why:"احتمال الحمل قد يؤثر في سلامة اختيار الأدوية. يلزم تقييم مناسب والتحقق من الحمل عند الحاجة.",
+source:["rutter","casebook","walker"]},
+
+{id:12,system:"Pediatrics",name:"الأطفال",title:"طلب جرعة لطفل",level:"متوسط",age:4,sex:"طفل",
+story:"ولي أمر يطلب جرعة دواء لطفل، لكنه لا يعرف وزن الطفل أو تركيز المستحضر الموجود لديه.",
+question:"ما التصرف الأكثر أماناً؟",
+options:["تخمين الجرعة حسب العمر","التحقق من الوزن واسم الدواء وتركيزه والمرجع المعتمد قبل حساب الجرعة","استخدام ملعقة مطبخ","تقسيم جرعة البالغ بالتخمين"],
+answer:1,why:"جرعات الأطفال تعتمد على الدواء والوزن والتركيز وعوامل أخرى. لا يجوز تخمين الجرعة.",
+source:["rutter","nonprescription","pl"]},
+
+{id:13,system:"Hematology",name:"الدم وفقر الدم",title:"تعب وشحوب",level:"متوسط",age:34,sex:"أنثى",
+story:"مريضة افتراضية تشكو التعب والشحوب، ولا تتوفر تحاليل حديثة لتحديد السبب.",
+question:"ما النهج الأنسب؟",
+options:["بدء الحديد لكل شخص متعب","تقييم الأسباب المحتملة والفحوصات المناسبة قبل تحديد العلاج","مكملات متعددة بجرعات عالية","تجاهل الأعراض"],
+answer:1,why:"التعب والشحوب لهما أسباب متعددة. يجب تحديد السبب قبل اختيار علاج محدد.",
+source:["casebook","walker"]},
+
+{id:14,system:"Mental Health",name:"الصحة النفسية",title:"انخفاض مزاج مستمر",level:"متوسط",age:30,sex:"ذكر",
+story:"مريض افتراضي يذكر انخفاض المزاج وفقدان الاهتمام لأسابيع مع تأثير على حياته اليومية.",
+question:"ما التصرف المهني الأنسب؟",
+options:["صرف دواء نفسي دون تقييم","ترتيب تقييم مهني والسؤال عن السلامة وخطر إيذاء النفس","تجاهل الأعراض","إيقاف الأدوية الحالية تلقائياً"],
+answer:1,why:"الأعراض المستمرة تستحق تقييماً مهنياً. عند وجود خطر وشيك لإيذاء النفس يجب طلب مساعدة طارئة.",
+source:["casebook","medscape"]},
+
+{id:15,system:"Pharmacy Practice",name:"الممارسة الصيدلانية",title:"تفاعل دوائي سابق خطير",level:"متقدم",age:48,sex:"ذكر",
+story:"مريض يطلب مضاداً حيوياً ويذكر تورم الوجه وصعوبة التنفس بعد دواء سابق، لكنه لا يتذكر اسم الدواء.",
+question:"ما الأولوية؟",
+options:["تجربة جرعة صغيرة","توثيق التفاعل والتحقق من الدواء السابق ومراجعة مختص قبل الاختيار","تجاهل الحساسية القديمة","اختيار دواء عشوائي"],
+answer:1,why:"التورم وصعوبة التنفس قد يشيران إلى تفاعل تحسسي خطير. يجب التحقق من الدواء المسبب وتجنب إعادة التعرض غير الآمن.",
+source:["casebook","pl","aphaa"]}
+];
+
+let answered=0,correct=0,current=null,locked=false;
+const $=id=>document.getElementById(id);
+
+function init(){
+  const systems=[...new Set(cases.map(c=>c.system))];
+  systems.forEach(s=>{
+    const op=document.createElement("option");op.value=s;op.textContent=s;
+    $("system").appendChild(op);
   });
+  $("sources").replaceChildren();
+  sources.forEach(s=>{
+    const div=document.createElement("div");div.className="card";
+    const title=document.createElement("strong");title.textContent=s.name;
+    const p=document.createElement("p");p.className="muted";p.textContent=s.note;
+    const a=document.createElement("a");a.href=s.url;a.target="_blank";
+    a.rel="noopener noreferrer";a.textContent="فتح الموقع أو صفحة الناشر ↗";
+    div.append(title,p,a);$("sources").appendChild(div);
+  });
+  renderCases();
 }
 function renderCases(){
-  const search=document.getElementById("search").value.trim().toLowerCase();
-  const cat=document.getElementById("category").value;
-  const level=document.getElementById("level").value;
+  const q=$("search").value.trim().toLowerCase(),sys=$("system").value,level=$("difficulty").value;
+  const list=$("list");list.replaceChildren();
   const filtered=cases.filter(c=>{
-    const text=(c.title+" "+c.name+" "+c.cat+" "+c.story).toLowerCase();
-    return (!search||text.includes(search)) &&
-      (cat==="all"||c.cat===cat) &&
-      (level==="all"||c.level===level);
+    const text=(c.title+" "+c.name+" "+c.system+" "+c.story).toLowerCase();
+    return (!q||text.includes(q))&&(sys==="all"||c.system===sys)&&(level==="all"||c.level===level);
   });
-  document.getElementById("caseCount").textContent=filtered.length+" حالة";
-  document.getElementById("scoreLabel").textContent="النتيجة: "+totalCorrect+"/"+totalAnswered;
-  const list=document.getElementById("caseList");
-  list.replaceChildren();
-  document.getElementById("quiz").classList.add("hidden");
+  $("stats").textContent="الحالات: "+filtered.length;
+  $("score").textContent="النتيجة: "+correct+" / "+answered;
   filtered.forEach(c=>{
-    const card=document.createElement("button");
-    card.className="case-card";
-    const icon=document.createElement("span");
-    icon.className="badge";icon.textContent=c.cat;
+    const b=document.createElement("button");b.className="tile";
     const title=document.createElement("strong");title.textContent=c.title;
-    const desc=document.createElement("small");
-    desc.textContent="العمر: "+c.age+" سنة · "+c.level;
-    card.append(icon,title,desc);
-    card.onclick=()=>startCase(c.id);
-    list.appendChild(card);
+    const tag=document.createElement("span");tag.className="badge";tag.textContent=c.system;
+    const small=document.createElement("div");small.className="muted";
+    small.textContent="عمر افتراضي: "+c.age+" · "+c.level;
+    b.append(tag,title,small);b.onclick=()=>openCase(c.id);list.appendChild(b);
   });
-  if(!filtered.length){
-    const empty=document.createElement("p");
-    empty.className="muted";empty.textContent="ما لقينا حالات مطابقة. جرّب كلمة بحث ثانية.";
-    list.appendChild(empty);
-  }
+  if(!filtered.length){const p=document.createElement("p");p.textContent="ماكو حالات مطابقة للبحث.";list.appendChild(p);}
 }
-function startCase(id){
-  activeCase=cases.find(c=>c.id===id);
-  answered=false;
-  const quiz=document.getElementById("quiz");
-  quiz.replaceChildren();
-  quiz.classList.remove("hidden");
-  const back=document.createElement("button");
-  back.className="back";back.textContent="← رجوع للحالات";
-  back.onclick=()=>{quiz.classList.add("hidden");renderCases()};
-  quiz.appendChild(back);
-  addText(quiz,"span","badge",activeCase.cat+" · "+activeCase.level);
-  addText(quiz,"h2","",activeCase.title);
-  addText(quiz,"p","muted","العمر الافتراضي: "+activeCase.age+" سنة · الجنس: "+activeCase.sex);
-  addText(quiz,"p","",activeCase.story);
-  addText(quiz,"h3","",activeCase.q);
-  activeCase.options.forEach((option,index)=>{
-    const btn=document.createElement("button");
-    btn.className="option";
-    btn.textContent=String.fromCharCode(65+index)+". "+option;
-    btn.onclick=()=>answerCase(index,btn);
-    quiz.appendChild(btn);
+function openCase(id){
+  current=cases.find(c=>c.id===id);locked=false;
+  $("home").classList.add("hidden");$("detail").classList.remove("hidden");
+  $("tags").replaceChildren();
+  [current.system,current.level].forEach(t=>{const s=document.createElement("span");s.className="badge";s.textContent=t;$("tags").appendChild(s)});
+  $("title").textContent=current.title;
+  $("patient").textContent="العمر الافتراضي: "+current.age+" سنة · "+current.sex;
+  $("story").textContent=current.story;$("question").textContent=current.question;
+  $("options").replaceChildren();$("feedback").classList.add("hidden");$("next").classList.add("hidden");
+  current.options.forEach((text,i)=>{
+    const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+text;
+    b.onclick=()=>choose(i);$("options").appendChild(b);
   });
-  const feedback=document.createElement("div");
-  feedback.id="feedback";
-  feedback.className="panel hidden";
-  quiz.appendChild(feedback);
-  quiz.scrollIntoView({behavior:"smooth",block:"start"});
+  window.scrollTo(0,0);
 }
-function addText(parent,tag,cls,value){
-  const el=document.createElement(tag);
-  if(cls)el.className=cls;
-  el.textContent=value;
-  parent.appendChild(el);
-  return el;
-}
-function answerCase(index,chosen){
-  if(answered)return;
-  answered=true;
-  totalAnswered++;
-  const c=activeCase;
-  const buttons=[...document.querySelectorAll("#quiz .option")];
-  buttons.forEach((btn,i)=>{
-    btn.disabled=true;
-    if(i===c.answer)btn.classList.add("correct");
-    if(i===index&&index!==c.answer)btn.classList.add("wrong");
+function choose(index){
+  if(locked)return;locked=true;answered++;
+  const right=index===current.answer;if(right)correct++;
+  [...$("options").children].forEach((b,i)=>{
+    b.disabled=true;if(i===current.answer)b.classList.add("correct");
+    if(i===index&&!right)b.classList.add("wrong");
   });
-  const correct=index===c.answer;
-  if(correct)totalCorrect++;
-  const feedback=document.getElementById("feedback");
-  feedback.classList.remove("hidden");
-  addText(feedback,"h3","",correct?"✅ إجابة صحيحة":"📘 راجع الإجابة");
-  addText(feedback,"p","",correct?
-    "أحسنت! اخترت الإجابة الأفضل لهذه الحالة التدريبية.":
-    "الإجابة الأفضل في هذه الحالة: "+c.options[c.answer]);
-  addText(feedback,"p","", "التفسير: "+c.why);
-  addText(feedback,"p","muted","تذكّر: الحالات التعليمية لا تغني عن مرجع دوائي معتمد أو تقييم سريري.");
-  const next=document.createElement("button");
-  next.className="primary";next.textContent="العودة إلى الحالات";
-  next.onclick=()=>{feedback.classList.add("hidden");renderCases()};
-  feedback.appendChild(next);
-  document.getElementById("scoreLabel").textContent="النتيجة: "+totalCorrect+"/"+totalAnswered;
-  feedback.scrollIntoView({behavior:"smooth",block:"start"});
+  const f=$("feedback");f.replaceChildren();f.classList.remove("hidden");
+  const h=document.createElement("h3");h.textContent=right?"✅ إجابة صحيحة":"📘 راجع الإجابة";f.appendChild(h);
+  const p=document.createElement("p");p.textContent="الإجابة الأفضل: "+current.options[current.answer];f.appendChild(p);
+  const why=document.createElement("p");why.textContent="التفسير: "+current.why;f.appendChild(why);
+  const heading=document.createElement("h4");heading.textContent="مراجع ذات صلة";f.appendChild(heading);
+  current.source.forEach(id=>{
+    const s=sources.find(x=>x.id===id);if(!s)return;
+    const a=document.createElement("p"),link=document.createElement("a");
+    link.href=s.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent=s.name+" ↗";
+    a.appendChild(link);f.appendChild(a);
+  });
+  $("next").classList.remove("hidden");
+  $("score").textContent="النتيجة: "+correct+" / "+answered;
+  f.scrollIntoView({behavior:"smooth",block:"start"});
 }
-window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    const splash=document.getElementById("splash");
-    splash.style.opacity="0";
-    setTimeout(()=>splash.style.display="none",450);
-  },2200);
-});
+function back(){
+  $("detail").classList.add("hidden");$("home").classList.remove("hidden");
+  renderCases();window.scrollTo(0,0);
+}
+init();
 </script>
 </body>
 </html>
